@@ -1,0 +1,29 @@
+﻿<Window x:Class="Client.ServersList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="ServersList" Height="450" Width="800" Closing="Window_Closing">
+    <Grid Background="DarkCyan">
+        <Border Padding="20" Margin="30" Background="LightCyan">
+            <StackPanel Orientation="Vertical">
+                <DataGrid IsReadOnly="True" HorizontalAlignment="Stretch" AutoGenerateColumns="False" x:Name="DGContent" ItemsSource="{Binding Servers}" Padding="30">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="IP" Binding="{Binding IP}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="PORT" Binding="{Binding PORT}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Cursor="Hand" Padding="10" Click="ButtonConnect_Click">Подключиться</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Click="ButtonUpdate_Click"  Cursor="Hand" Content="Обновить список серверов" Padding="10" HorizontalAlignment="Center" Margin="10"></Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
